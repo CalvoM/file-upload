@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  pg_server:
+    image: "postgres:latest"
+    container_name: "files_pg"
+    ports:
+      - "5431:5432"
+    env_file:
+      - .docker_env
+networks:
+  default:
+    external:
+      name: files-net

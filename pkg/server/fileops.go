@@ -27,6 +27,8 @@ func PutFile(c context.Context, api S3PutObjectAPI, input *s3.PutObjectInput) (*
 	return api.PutObject(c, input)
 }
 
+//go:generate go run ../update.go ../../.env S3bucket
+
 func fileHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseMultipartForm(10 << 20)
 	fmt.Println(r.Header.Get("Content-Type"))
